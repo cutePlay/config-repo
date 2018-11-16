@@ -1,0 +1,14 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/cutePlay/config-repo
+          basedir: target/config
+      name: config-server
+management:
+  server:
+    servlet:
+      context-path: /admin
