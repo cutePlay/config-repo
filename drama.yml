@@ -1,7 +1,36 @@
-server:
-  port: 8088
 spring:
-  data:
-      jdbc:
-        repositories:
-          enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/drama?useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maxLifetime: 1765000
+      maximumPoolSize: 15
+cors:
+  enable: true
+  origin:
+    - http://localhost(:\d+)
+wechat:
+  appId: wx93a610c9f8cc4282
+  appSecret: 4493415855caf1b70e2c45c4de784110
+  token: qianfan1314cute
+play:
+  front-url: http://localhost:8800?openid=%s
+eureka:
+  client:
+    service-url:
+     # 注册地址
+      default-url: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+    #多久拉取服务注册信息 s
+    registry-fetch-interval-seconds: 20
+  instance:
+    # 10s未收到心跳，剔除instance 要比心跳时间大
+    lease-expiration-duration-in-seconds: 10
+    # 心跳时间
+    lease-renewal-interval-in-seconds: 5
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    hostname: localhost.com
